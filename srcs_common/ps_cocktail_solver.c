@@ -52,7 +52,7 @@ static int	sorted_backward(t_ps_stack *stack, int min, int max, int index)
 	return (1);
 }
 
-void	internal_cocktail(t_ps_stack *stack, int min, int max, int options)
+static void	internal_cocktail(t_ps_stack *stack, int min, int max, int options)
 {
 	int	i;
 	int	rotate;
@@ -79,7 +79,6 @@ void	internal_cocktail(t_ps_stack *stack, int min, int max, int options)
 			rotate = sorted_backward(stack, min, max, i);
 		}
 	}
-	go_to_endofbucket(stack, min, max, options);
 }
 
 void	stack_cocktail(t_ps_stack *stack, int min, int max, int options)
@@ -95,4 +94,5 @@ void	stack_cocktail(t_ps_stack *stack, int min, int max, int options)
 		return ;
 	}
 	internal_cocktail(stack, min, max, options);
+	go_to_endofbucket(stack, min, max, options);
 }

@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-int	find_common(t_ps_stack *lead, t_ps_stack *find, int *how_far)
+static int	find_common(t_ps_stack *lead, t_ps_stack *find, int *how_far)
 {
 	t_idmnode	*l;
 	t_idmnode	*f;
@@ -39,7 +39,8 @@ int	find_common(t_ps_stack *lead, t_ps_stack *find, int *how_far)
 	return (0);
 }
 
-int	closest_common(t_ps_stack *a_stack, t_ps_stack *b_stack, int *is_from_a)
+static int	closest_common(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+int *is_from_a)
 {
 	int	far_in_b;
 	int	far_in_a;

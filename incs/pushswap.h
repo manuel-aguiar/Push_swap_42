@@ -93,7 +93,6 @@ int			pushswap(int ac, char **av);
 int			ps_preprocess(t_icplist **final, int ac, char **av);
 
 /* ps_preprocess_utils.c*/
-
 int			ps_valid_char(char c);
 int			wordnum(char *str);
 int			ps_atoi_overf(int res, char next, int *sign);
@@ -116,7 +115,6 @@ int			error_msg(void);
 int			malloc_failed(void);
 
 /*ps_stack_setup.c*/
-
 void		setup_stack_a(t_ps_stack *a);
 void		setup_stack_b(t_ps_stack *b);
 void		setup_move_codes(t_inst_code *code);
@@ -161,9 +159,6 @@ void		insertion_sort_push(t_ps_stack *from, t_ps_stack *to, int start, int end);
 void 		swap_when_pushing(t_ps_stack *stack, int min, int max);
 void 		swap_when_inserting(t_ps_stack *stack, int target, int min, int max);
 
-
-
-
 /*ps_plays_supermoves.c*/
 void		super_swap(t_ps_stack *a_stack, t_ps_stack *b_stack, int min, int max);
 void		super_rotate(t_ps_stack *a_stack, t_ps_stack *b_stack);
@@ -174,32 +169,18 @@ void    	pushbucket_divide(t_ps_stack *from, t_ps_stack *to, int min, int max);
 void    	pushbucket_divide_col(t_ps_stack *from, t_ps_stack *to, int min, int max);
 
 /* algos */
-
-
-
 /*ps_quicksort.c*/
 void		quicksort_a(t_ps_stack *a_stack, t_ps_stack *b_stack, int start, int end);
 void		quicksort_b(t_ps_stack *a_stack, t_ps_stack *b_stack, int start, int end);
 
-
-
-
-/*THESE FILES ARE USED ON COCKTAIL SORTING*/
 /*ps_cocktail_best_entry.c*/
 int			best_cocktail_entry(t_ps_stack *stack, int len);
 
-
-
 /*ps_cocktail_best_entry_mv.c*/
-t_icpnode	*get_stack_to_place(t_ps_stack *stack, int current, int target, int options);
-int			bucket_is_alone_in_list(t_ps_stack *stack, int min, int max);
-int 		find_end_of_bucket(t_ps_stack *stack, int min, int max, int options);
 int 		get_stack_to_best_entry(t_ps_stack *stack, int min, int max, int options);
-
 
 /*ps_cocktail_solver.c*/
 void		stack_cocktail(t_ps_stack *stack, int min, int max, int options);
-
 
 /*ps_cocktail_solver_utils.c*/
 void 		pushswap_sort_two(t_ps_stack *stack, int options);
@@ -209,6 +190,12 @@ void		pushswap_sort_three(t_ps_stack *stack, int options);
 /*ps_cocktail_parallel.c*/
 void		parallel_cocktail(t_ps_stack *lead, t_ps_stack *follow, int min, int max);
 
+/*ps_insertion_minmax.c*/
+void		insertion_minmax(t_ps_stack *from, t_ps_stack *to, int min, int max);
+
+/*ps_insertion_minmax_utils.c*/
+int			closest_two_target(t_ps_stack *stack, int min, int max, int *is_max);
+int			find_bucket_end_back(t_ps_stack *stack, int min, int max);
 
 /* ps_execute_ops.c*/
 int			execute_single(t_ps_stack *stack, t_ps_stack *other, int command, int options);
@@ -216,7 +203,6 @@ int			execute_combo(t_ps_stack *stack, t_ps_stack *other, int command, int optio
 char		*inst_reverse(t_ps_stack *stack, t_ps_stack *other, int command);
 int			execute_list_rev(t_ps_stack *a_stack, t_ps_stack *b_stack, t_idmlist *ops, int options);
 int			execute_list(t_ps_stack *a_stack, t_ps_stack *b_stack, t_idmlist *ops, int options);
-
 
 /*ps_trials_a_stack.c*/
 void		a_stack_double_ins(t_ps_stack *a_stack, t_ps_stack *b_stack, int min, int max);
@@ -233,14 +219,11 @@ void 		b_stack_trials(t_ps_stack *a_stack, t_ps_stack *b_stack, int min, int max
 void		trial_judge(t_ps_stack *challenger, t_idmlist **record, int first_try);
 void		trial_minmax(t_ps_stack *challenger, t_idmlist **record);
 
-/*ps_combo.c*/
-int			find_common(t_ps_stack *lead, t_ps_stack *find, int *how_far);
-int			closest_common(t_ps_stack *a_stack, t_ps_stack *b_stack, int *is_from_a);
+/*ps_parellelize.c*/
 void		intersect_plays(t_idmlist *combo, t_ps_stack *a_stack, t_ps_stack *b_stack);
 void		merge_plays(t_ps_stack *receiver, t_ps_stack *sender);
-void		merge_plays_new(t_idmlist **receiver, t_idmlist **sender);
 
-/*ps_combo_lists.c*/
+/*ps_parellelize_lists.c*/
 t_idmnode	*idmlist_retrieve_head(t_idmlist **list);
 void		idmlist_node_to_tail(t_idmlist *list, t_idmnode *new_node);
 void		idmlist_del_head_destroy(t_idmlist **list);
@@ -259,9 +242,7 @@ void		print_command_nbr(int command);
 
 
 
-/*ps_insertion_minmax.c*/
 
-void	insertion_minmax(t_ps_stack *from, t_ps_stack *to, int min, int max);
 
 
 

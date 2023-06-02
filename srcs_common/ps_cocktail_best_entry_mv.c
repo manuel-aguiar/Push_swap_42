@@ -12,41 +12,7 @@
 
 #include "pushswap.h"
 
-t_icpnode	*get_stack_to_place(t_ps_stack *stack, int current, \
-int target, int options)
-{
-	int	len;
-	int	move;
-
-	len = stack->list->len;
-	move = len - current + target;
-	if (move > len / 2)
-		pslist_rotate(stack, len - move, options);
-	else
-		pslist_rotate(stack, move, options);
-	return (stack->list->pivot);
-}
-
-int	bucket_is_alone_in_list(t_ps_stack *stack, int min, int max)
-{
-	t_icpnode	*cur;
-	int			size;
-	int			i;
-
-	size = max - min + 1;
-	cur = stack->list->pivot;
-	i = 0;
-	while (i < size && in_bucket(cur->data, min, max))
-	{
-		cur = cur->next;
-		i++;
-	}
-	if (i == size)
-		return (1);
-	return (0);
-}
-
-int	find_end_of_bucket(t_ps_stack *stack, int min, int max, int options)
+static int	find_end_of_bucket(t_ps_stack *stack, int min, int max, int options)
 {
 	t_icpnode	*cur;
 	int			i;
@@ -78,7 +44,7 @@ int	get_stack_to_best_entry(t_ps_stack *stack, int min, int max, int options)
 	int	len;
 	int	best_index;
 
-	if (!bucket_is_alone_in_list(stack, min, max))
+	if (!full_list_is_bucket(stack, min, max))
 		return (find_end_of_bucket(stack, min, max, options));
 	len = stack->list->len;
 	best_index = best_cocktail_entry(stack, stack->list->len);

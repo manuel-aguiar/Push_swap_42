@@ -45,6 +45,7 @@ FILES		=		ps_preprocess.c 			\
 					ps_cocktail_solver_utils.c	\
 					ps_cocktail_parallel.c		\
 					ps_insertion_minmax.c		\
+					ps_insertion_minmax_utils.c	\
 					ps_check_sort.c 			\
 					ps_execute_ops.c 			\
 					ps_quicksort.c				\
