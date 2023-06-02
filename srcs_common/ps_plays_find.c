@@ -12,18 +12,6 @@
 
 #include "pushswap.h"
 
-int	in_bucket(int target, int min, int max)
-{
-	if (min == max)
-		return (target == min);
-	return ((target >= min && target < max));
-}
-
-int	is_target(int target, int test)
-{
-	return (target == test);
-}
-
 int	find_exact_target(t_ps_stack *stack, int target)
 {
 	int			size;
@@ -47,40 +35,6 @@ int	find_exact_target(t_ps_stack *stack, int target)
 	}
 	return (0);
 }
-
-/*
-int find_exact_target(t_ps_stack *stack, int target)
-{
-	t_icpnode	*forward;
-	t_icpnode	*backward;
-	int			countpos;
-	int			countneg;
-
-	countpos = 0;
-	countneg = 0;
-	forward = stack->list->pivot;
-	backward = stack->list->pivot;
-	while (1)
-	{
-		if (!is_target(forward->data, target))
-		{
-			countpos++;
-			forward = forward->next;
-		}
-		else
-			break;
-		if (!is_target(backward->data, target))
-		{
-			countneg--;
-			backward = backward->prev;
-		}
-		else
-			break;
-	}
-	if (is_target(forward->data, target))
-		return (countpos);
-	return (countneg);
-}*/
 
 int	find_mid_intersection(t_ps_stack *stack, int min, int max)
 {
@@ -109,48 +63,6 @@ int	find_mid_intersection(t_ps_stack *stack, int min, int max)
 	}
 	return (0);
 }
-
-/*
-int find_closest_in_bucket(t_ps_stack *stack, int min, int max)
-{
-	t_icpnode	*forward;
-	t_icpnode	*backward;
-	int			countpos;
-	int			countneg;
-
-	countpos = 0;
-	countneg = 0;
-	forward = stack->list->pivot;
-	backward = stack->list->pivot;
-	while (1)
-	{
-		if (!in_bucket(forward->data, min, max))
-		{
-			countpos++;
-			forward = forward->next;
-		}
-		else
-			break;
-		if (!in_bucket(forward->data, min, max))
-		{
-			countpos++;
-			forward = forward->next;
-		}
-		else
-			break;
-		if (!in_bucket(backward->data, min, max))
-		{
-			countneg--;
-			backward = backward->prev;
-		}
-		else
-			break;
-	}
-
-	if (in_bucket(forward->data, min, max))
-		return (countpos);
-	return (countneg);
-}*/
 
 int	find_closest_in_bucket(t_ps_stack *stack, int min, int max)
 {
@@ -233,39 +145,79 @@ int	find_bucket_begins(t_ps_stack *stack, int min, int max)
 	return (0);
 }
 
-int	members_in_bucket(t_ps_stack *stack, int min, int max)
+/*
+int find_closest_in_bucket(t_ps_stack *stack, int min, int max)
 {
-	int			size;
-	t_icpnode	*cur;
+	t_icpnode	*forward;
+	t_icpnode	*backward;
+	int			countpos;
+	int			countneg;
 
-	cur = stack->list->pivot;
-	size = stack->list->len;
-	while (size--)
+	countpos = 0;
+	countneg = 0;
+	forward = stack->list->pivot;
+	backward = stack->list->pivot;
+	while (1)
 	{
-		if (in_bucket(cur->data, min, max))
-			return (1);
-		cur = cur->next;
+		if (!in_bucket(forward->data, min, max))
+		{
+			countpos++;
+			forward = forward->next;
+		}
+		else
+			break;
+		if (!in_bucket(forward->data, min, max))
+		{
+			countpos++;
+			forward = forward->next;
+		}
+		else
+			break;
+		if (!in_bucket(backward->data, min, max))
+		{
+			countneg--;
+			backward = backward->prev;
+		}
+		else
+			break;
 	}
-	return (0);
-}
 
-int	full_list_is_bucket(t_ps_stack *stack, int min, int max)
+	if (in_bucket(forward->data, min, max))
+		return (countpos);
+	return (countneg);
+}*/
+
+
+/*
+int find_exact_target(t_ps_stack *stack, int target)
 {
-	int			size;
-	t_icpnode	*fwd;
-	t_icpnode	*back;
+	t_icpnode	*forward;
+	t_icpnode	*backward;
+	int			countpos;
+	int			countneg;
 
-	fwd = stack->list->pivot;
-	back = stack->list->pivot;
-	size = stack->list->len / 2 + 1;
-	while (size--)
+	countpos = 0;
+	countneg = 0;
+	forward = stack->list->pivot;
+	backward = stack->list->pivot;
+	while (1)
 	{
-		if (!in_bucket(fwd->data, min, max))
-			return (0);
-		if (!in_bucket(fwd->data, min, max))
-			return (0);
-		fwd = fwd->next;
-		back = back->prev;
+		if (!is_target(forward->data, target))
+		{
+			countpos++;
+			forward = forward->next;
+		}
+		else
+			break;
+		if (!is_target(backward->data, target))
+		{
+			countneg--;
+			backward = backward->prev;
+		}
+		else
+			break;
 	}
-	return (1);
-}
+	if (is_target(forward->data, target))
+		return (countpos);
+	return (countneg);
+}*/

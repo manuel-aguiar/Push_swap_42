@@ -142,16 +142,18 @@ void		go_to_bucket_ends(t_ps_stack *stack, int min, int max, int options);
 void		go_to_bucket_begins(t_ps_stack *stack, int min, int max, int options);
 
 /* ps_plays_find.c*/
-int			in_bucket(int target, int min, int max);
-int			is_target(int target, int test);
 int			find_exact_target(t_ps_stack *stack, int target);
 int			find_closest_in_bucket(t_ps_stack *stack, int min, int max);
 int			find_mid_intersection(t_ps_stack *stack, int min, int max);
 int			find_bucket_begins(t_ps_stack *stack, int min, int max);
 int			find_bucket_ends(t_ps_stack *stack, int min, int max);
 
+/*ps_play_find_utils.c*/
+int			in_bucket(int target, int min, int max);
+int			is_target(int target, int test);
 int   		members_in_bucket(t_ps_stack *stack, int min, int max);
 int			full_list_is_bucket(t_ps_stack *stack, int min, int max);
+int			last_sorted_number(t_ps_stack *stack, int start, int end);
 
 /*ps_plays_compound.c*/
 void		pushbucket(t_ps_stack *from, t_ps_stack *to, int min, int max);
@@ -202,6 +204,7 @@ void		stack_cocktail(t_ps_stack *stack, int min, int max, int options);
 /*ps_cocktail_solver_utils.c*/
 void 		pushswap_sort_two(t_ps_stack *stack, int options);
 void		cocktail_two(t_ps_stack *stack, int min, int max, int options);
+void		pushswap_sort_three(t_ps_stack *stack, int options);
 
 /*ps_cocktail_parallel.c*/
 void		parallel_cocktail(t_ps_stack *lead, t_ps_stack *follow, int min, int max);

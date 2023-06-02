@@ -89,5 +89,10 @@ void	stack_cocktail(t_ps_stack *stack, int min, int max, int options)
 		cocktail_two(stack, min, max, options);
 		return ;
 	}
+	if (max - min == 3 && full_list_is_bucket(stack, min, max))
+	{
+		pushswap_sort_three(stack, options);
+		return ;
+	}
 	internal_cocktail(stack, min, max, options);
 }

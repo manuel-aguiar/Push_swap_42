@@ -35,6 +35,7 @@ FILES		=		ps_preprocess.c 			\
 					ps_plays_options.c			\
 					ps_plays_goto.c 			\
 					ps_plays_find.c 			\
+					ps_plays_find_utils.c 		\
 					ps_plays_compound.c 		\
 					ps_plays_supermoves.c		\
 					ps_plays_pushbucket_div.c	\

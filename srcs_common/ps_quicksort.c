@@ -96,20 +96,12 @@ int start, int end)
 	int mid;
 	int quarter;
 
-	//printf("quicksort A start %d, end %d\n", start, end);
 	if (bucket_is_sorted(a_stack, start, end))
 		return ;
 	end = last_sorted_number(a_stack, start, end);
-
-
 	if (end - start < INSORT_TO_B)
 	{
-
-		//insertion_sort_push(a_stack, b_stack, start, end);
-		//insertion_sort_push(b_stack, a_stack, start, end);
-
 		a_stack_trials(a_stack, b_stack, start, end);
-
 		return ;
 	}
 	mid = (start + end) / 2;
