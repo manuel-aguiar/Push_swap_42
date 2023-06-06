@@ -33,8 +33,8 @@ int min, int max)
 {
 	t_idmlist	*combo;
 	t_idmlist	*save_prev;
+	int			mid;
 
-	int		mid;
 	mid = (min + max) / 2;
 	combo = idmlist_new();
 	if (lead->trial_mode || follow->trial_mode)

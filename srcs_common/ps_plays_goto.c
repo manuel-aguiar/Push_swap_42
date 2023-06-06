@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-void 	go_to_target_swap(t_ps_stack *stack, int target, int min, int max)
+void	go_to_target_swap(t_ps_stack *stack, int target, int min, int max)
 {
 	int	i;
 
@@ -54,7 +54,7 @@ void	go_to_intersection(t_ps_stack *stack, int min, int max, int options)
 
 void	go_to_bucket_ends(t_ps_stack *stack, int min, int max, int options)
 {
-	pslist_rotate(stack, find_bucket_ends(stack, min,  max), options);
+	pslist_rotate(stack, find_bucket_ends(stack, min, max), options);
 }
 
 void	go_to_endofbucket(t_ps_stack *stack, int min, int max, int options)
@@ -67,5 +67,5 @@ void	go_to_endofbucket(t_ps_stack *stack, int min, int max, int options)
 
 void	go_to_bucket_begins(t_ps_stack *stack, int min, int max, int options)
 {
-	pslist_rotate(stack, find_bucket_begins(stack, min,  max), options);
+	pslist_rotate(stack, find_bucket_begins(stack, min, max), options);
 }

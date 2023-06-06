@@ -1,15 +1,15 @@
 
 ## BUILD DETAILS
 
-NAME 		=		push_swap.exe
-BONUS 		=		checker.exe
+NAME 		=		push_swap
+BONUS 		=		checker
 
-CC 			= 		gcc
+CC 			= 		cc
 ## -Wall Wextra Werror
 FLAGS 		= 		-Wall -Werror -Wextra
 ADD_LIB 	= 		-L./$(LIB_PATH) -lft
 RM 			=		rm
-MAKE		=		mingw32-make
+MAKE		=		make
 
 ## FOLDER PATH ##
 INC_PATH	=		incs

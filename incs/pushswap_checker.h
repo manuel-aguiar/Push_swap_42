@@ -10,9 +10,13 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "pushswap.h"
+#ifndef PUSHSWAP_CHECKER_H
 
-typedef struct	s_pscount
+# define PUSHSWAP_CHECKER_H
+
+# include "pushswap.h"
+
+typedef struct s_pscount
 {
 	int	total_numbers;
 	int	total_count;
@@ -38,13 +42,20 @@ void	stack_and_counter(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 t_pscount *counter, int *total_len);
 
 /*  ps_checker_utils.c */
-int		op_swap(t_ps_stack *a_stack, t_ps_stack *b_stack, char *op, t_pscount *counter);
-int		op_reverse_rotation(t_ps_stack *a_stack, t_ps_stack *b_stack, char *op, t_pscount *counter);
-int		op_rotation(t_ps_stack *a_stack, t_ps_stack *b_stack, char *op, t_pscount *counter);
-int		distribute_operations(t_ps_stack *a_stack, t_ps_stack *b_stack, char *op, t_pscount *counter);
-int		get_all_operations(t_ps_stack *a_stack, t_ps_stack *b_stack, t_pscount *counter);
+int		op_swap(t_ps_stack *a_stack, t_ps_stack *b_stack, char *op, \
+t_pscount *counter);
+int		op_reverse_rotation(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+char *op, t_pscount *counter);
+int		op_rotation(t_ps_stack *a_stack, t_ps_stack *b_stack, char *op, \
+t_pscount *counter);
+int		distribute_operations(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+char *op, t_pscount *counter);
+int		get_all_operations(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+t_pscount *counter);
 
 /*  ps_checker_counter.c */
 void	set_counter_on_stack(t_pscount *counter, int len);
 void	set_counter_total(t_pscount *counter);
 void	print_counter(t_pscount *counter);
+
+#endif

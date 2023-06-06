@@ -14,7 +14,7 @@
 
 static int	ascending(int a, int b)
 {
-	 return (a > b);
+	return (a > b);
 }
 
 static int	copy_icplist_to_array(t_icplist *list, int **place)
@@ -64,7 +64,7 @@ static int	normalize_list(t_icplist *list)
 	if (!copy_icplist_to_array(list, &sorted))
 		return (0);
 	len = list->len;
-	if(!tim_sort(sorted, len, &ascending) || !check_sorted_dups(sorted, len))
+	if (!tim_sort(sorted, len, &ascending) || !check_sorted_dups(sorted, len))
 	{
 		ft_free_set_null(&sorted);
 		return (0);

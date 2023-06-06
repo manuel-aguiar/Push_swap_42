@@ -18,7 +18,7 @@ int	save_command(t_ps_stack *stack, int command)
 		stack->save_plays = idmlist_new();
 	if (!stack->save_plays)
 		return (0);
-	if(idmlist_in_tail(stack->save_plays, command))
+	if (idmlist_in_tail(stack->save_plays, command))
 		return (1);
 	return (0);
 }
@@ -30,7 +30,7 @@ char *cmd, int cmd_num)
 		ft_printf("%s", cmd);
 	if (options & O_COUNT && !stack->trial_mode && !(options & O_COMBO))
 		(stack->op_counter)++;
-	if (!(options & O_COMBO) && (options & O_SAVE
-	|| (stack->trial_mode && (!(options & O_REVERSE)))))
+	if (!(options & O_COMBO) && (options & O_SAVE \
+		|| (stack->trial_mode && (!(options & O_REVERSE)))))
 		save_command(stack, cmd_num);
 }

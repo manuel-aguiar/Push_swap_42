@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_check_sort.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 14:39:43 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/01 15:09:16 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:23:46 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,11 +17,11 @@ int	bucket_is_sorted(t_ps_stack *stack, int min, int max)
 	t_icpnode	*cur;
 
 	if (stack->list->len == 1)
-	return (1);
+		return (1);
 	cur = stack->list->pivot;
 	if (stack->ascending)
 	{
-		while(cur->data == min && min < max)
+		while (cur->data == min && min < max)
 		{
 			cur = cur->next;
 			min++;
@@ -29,7 +29,7 @@ int	bucket_is_sorted(t_ps_stack *stack, int min, int max)
 	}
 	else
 	{
-		while(cur->data == (max - 1) && min < max)
+		while (cur->data == (max - 1) && min < max)
 		{
 			cur = cur->next;
 			max--;
@@ -40,7 +40,8 @@ int	bucket_is_sorted(t_ps_stack *stack, int min, int max)
 	return (0);
 }
 
-int	final_sort_check(t_ps_stack *a_stack, t_ps_stack *b_stack, int total, int print)
+int	final_sort_check(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+int total, int print)
 {
 	t_icpnode	*cur;
 

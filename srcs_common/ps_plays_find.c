@@ -187,7 +187,6 @@ int find_closest_in_bucket(t_ps_stack *stack, int min, int max)
 	return (countneg);
 }*/
 
-
 /*
 int find_exact_target(t_ps_stack *stack, int target)
 {

@@ -46,4 +46,3 @@ int	find_bucket_end_back(t_ps_stack *stack, int min, int max)
 	}
 	return (1);
 }
-

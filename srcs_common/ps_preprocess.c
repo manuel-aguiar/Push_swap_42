@@ -12,19 +12,21 @@
 
 #include "pushswap.h"
 
-static int
-split_to_list(t_idmlist *list, char *arg)
+static int	split_to_list(t_idmlist *list, char *arg)
 {
 	int	total_nums;
 	int	i;
 	int	num;
 
-	if (!arg || !*arg || !(total_nums = wordnum(arg)))
+	if (!arg || !*arg)
+		return (0);
+	total_nums = wordnum(arg);
+	if (!total_nums)
 		return (0);
 	i = 0;
 	while (i < total_nums)
 	{
-		if(ps_atoiable(&arg, &num) \
+		if (ps_atoiable(&arg, &num) \
 		&& idmlist_in_tail(list, num))
 			i++;
 		else
@@ -49,7 +51,7 @@ static int	join_all_splits(t_idmlist **list, int size, char **args)
 		{
 			check = 0;
 			idmlist_destroy(list);
-			break;
+			break ;
 		}
 		i++;
 	}

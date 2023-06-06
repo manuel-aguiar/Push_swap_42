@@ -12,7 +12,7 @@
 
 #include "pushswap.h"
 
-int pushswap(int ac, char **av)
+int	pushswap(int ac, char **av)
 {
 	t_ps_stack	a_stack;
 	t_ps_stack	b_stack;
@@ -35,7 +35,7 @@ int pushswap(int ac, char **av)
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac > 1)
 		pushswap(--ac, ++av);

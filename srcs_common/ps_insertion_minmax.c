@@ -26,7 +26,7 @@ static int	find_insertion_point(t_ps_stack *stack, int min, int max)
 	while (size--)
 	{
 		if (is_target(fwd->data, max) \
-		&& is_target(fwd->prev->data, min)) \
+		&& is_target(fwd->prev->data, min))
 			return (count);
 		if (is_target(back->data, max) \
 		&& is_target(back->prev->data, min))
@@ -38,7 +38,7 @@ static int	find_insertion_point(t_ps_stack *stack, int min, int max)
 	return (0);
 }
 
-static void collective_move(t_ps_stack *from, t_ps_stack *to, \
+static void	collective_move(t_ps_stack *from, t_ps_stack *to, \
 int *from_begin, int *to_begin)
 {
 	if (*from_begin < 0 && *to_begin < 0)
@@ -104,7 +104,7 @@ void	insertion_minmax(t_ps_stack *from, t_ps_stack *to, int min, int max)
 		closest = closest_two_target(from, cur_min, cur_max, &is_max);
 		if (!members_in_bucket(to, min, cur_min))
 			intersection = 0;
-		else if(!members_in_bucket(to, cur_max, max))
+		else if (!members_in_bucket(to, cur_max, max))
 			intersection = find_bucket_ends(to, min, cur_min);
 		else
 			intersection = find_insertion_point(to, cur_min - 1, cur_max + 1);

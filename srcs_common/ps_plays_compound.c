@@ -17,12 +17,11 @@ void	swap_when_pushing(t_ps_stack *stack, int min, int max)
 	t_icpnode	*cur;
 
 	cur = stack->list->pivot;
-	if (((cur->data == cur->next->data + 1 && stack->ascending)\
-	|| ((cur->data == cur->next->data - 1 && !stack->ascending)))
+	if (((cur->data == cur->next->data + 1 && stack->ascending) \
+	|| ((cur->data == cur->next->data - 1 && !stack->ascending))) \
 	&& !in_bucket(cur->data, min, max) \
 	&& !in_bucket(cur->next->data, min, max))
 		pslist_swap_top(stack, O_PRINT | O_COUNT);
-
 }
 
 void	pushbucket(t_ps_stack *from, t_ps_stack *to, int min, int max)
@@ -62,7 +61,7 @@ void	swap_when_inserting(t_ps_stack *stack, int target, int min, int max)
 	if (stack->list->len <= 1)
 		return ;
 	cur = stack->list->pivot;
-	if (((cur->data == cur->next->data + 1 && stack->ascending)
+	if (((cur->data == cur->next->data + 1 && stack->ascending) \
 	|| (cur->data == cur->next->data - 1 && !stack->ascending)) \
 	&& !is_target(cur->data, target) \
 	&& !is_target(cur->next->data, target) \
@@ -73,7 +72,8 @@ void	swap_when_inserting(t_ps_stack *stack, int target, int min, int max)
 	}
 }
 
-void	insertion_sort_push(t_ps_stack *from, t_ps_stack *to, int start, int end)
+void	insertion_sort_push(t_ps_stack *from, t_ps_stack *to, \
+int start, int end)
 {
 	int	size;
 

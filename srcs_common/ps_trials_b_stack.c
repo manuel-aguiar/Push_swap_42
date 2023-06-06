@@ -13,13 +13,14 @@
 #include "pushswap.h"
 
 void	b_stack_straight_ins(t_ps_stack *a_stack, t_ps_stack *b_stack, \
-							int min, int max)
+int min, int max)
 {
 	insertion_sort_push(b_stack, a_stack, min, max);
 	execute_list_rev(a_stack, b_stack, b_stack->save_plays, O_REVERSE);
 }
 
-void	b_stack_double_cocktail(t_ps_stack *a_stack, t_ps_stack *b_stack, int min, int max)
+void	b_stack_double_cocktail(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+int min, int max)
 {
 	int	mid;
 
@@ -32,7 +33,7 @@ void	b_stack_double_cocktail(t_ps_stack *a_stack, t_ps_stack *b_stack, int min, 
 }
 
 void	b_stack_insertion_minmax(t_ps_stack *a_stack, t_ps_stack *b_stack, \
-								int min, int max)
+int min, int max)
 {
 	insertion_minmax(b_stack, a_stack, min, max);
 	merge_plays(b_stack, a_stack);
@@ -40,7 +41,7 @@ void	b_stack_insertion_minmax(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 }
 
 void	b_stack_trials(t_ps_stack *a_stack, t_ps_stack *b_stack, \
-						int min, int max)
+int min, int max)
 {
 	t_idmlist	*best_play;
 

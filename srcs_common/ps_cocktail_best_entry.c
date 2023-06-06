@@ -71,9 +71,9 @@ int	best_cocktail_entry(t_ps_stack *stack, int len)
 	int			i;
 
 	best_index = 0;
-	i = 0;
+	i = -1;
 	cur = stack->list->pivot;
-	while (i < len)
+	while (++i < len)
 	{
 		if (i == 0)
 			best_score = score_sum(cur, len);
@@ -86,7 +86,6 @@ int	best_cocktail_entry(t_ps_stack *stack, int len)
 				best_score = comp;
 			}
 		}
-		i++;
 		cur = cur->next;
 	}
 	return (best_index);

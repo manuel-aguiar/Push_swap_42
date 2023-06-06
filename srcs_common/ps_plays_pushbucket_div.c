@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ps_plays_pushbucket_div.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 20:16:21 by mmaria-d          #+#    #+#             */
-/*   Updated: 2023/06/02 16:26:30 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:44:27 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,9 +34,9 @@ static void	up_or_down(t_ps_stack *from, t_ps_stack *to, int min, int max)
 		return ;
 	}
 	if (!(((data_from >= min && data_from < mid) \
-	&& ( data_to >= min && data_to < mid)) \
+	&& (data_to >= min && data_to < mid)) \
 	|| ((data_from >= mid && data_from < max) \
-	&& ( data_to >= mid && data_to < max))))
+	&& (data_to >= mid && data_to < max))))
 		go_to_intersection(to, min, max, O_PRINT | O_COUNT);
 	pslist_push_top(to, from, O_PRINT | O_COUNT);
 }

@@ -83,7 +83,6 @@ static int	pslist_add_top(t_ps_stack *stack, t_icpnode *newtop)
 	return (1);
 }
 
-
 int	pslist_push_top(t_ps_stack *to, t_ps_stack *from, int options)
 {
 	t_icpnode	*move;

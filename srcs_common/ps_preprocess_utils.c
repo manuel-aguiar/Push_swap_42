@@ -3,13 +3,12 @@
 /*                                                        :::      ::::::::   */
 /*   ps_preprocess_utils.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:51:02 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/01 14:49:10 by marvin           ###   ########.fr       */
+/*   Updated: 2023/06/06 18:27:56 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "pushswap.h"
 
@@ -74,8 +73,8 @@ int	ps_atoi_overf(int res, char next, int *sign)
 			*sign = 0;
 			return (0);
 		}
-	 }
-	 return (1);
+	}
+	return (1);
 }
 
 int	ps_atoiable(char **arg, int *placenum)
@@ -95,7 +94,7 @@ int	ps_atoiable(char **arg, int *placenum)
 	if (!ft_isdigit(*str))
 		sign = 0;
 	res = 0;
-	while(*str && ft_isdigit(*str) && ps_atoi_overf(res, *str, &sign))
+	while (*str && ft_isdigit(*str) && ps_atoi_overf(res, *str, &sign))
 		res = res * 10 - '0' + *str++;
 	*placenum = res * sign;
 	if (sign == 0 || (!ft_isspace(*str) && *str))

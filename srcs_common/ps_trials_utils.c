@@ -19,9 +19,11 @@ void	trial_minmax(t_ps_stack *challenger, t_idmlist **record)
 
 	count = 0;
 	cur = challenger->save_plays->tail;
-	while (cur && (cur->data != challenger->codes.rr_num && cur->data != challenger->codes.rrr_num))
+	while (cur && (cur->data != challenger->codes.rr_num \
+		&& cur->data != challenger->codes.rrr_num))
 		cur = cur->prev;
-	while (cur && (cur->data == challenger->codes.rr_num || cur->data == challenger->codes.rrr_num))
+	while (cur && (cur->data == challenger->codes.rr_num \
+		|| cur->data == challenger->codes.rrr_num))
 	{
 		count++;
 		cur = cur->prev;

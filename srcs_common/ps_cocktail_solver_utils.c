@@ -24,7 +24,7 @@ void	pushswap_sort_two(t_ps_stack *stack, int options)
 
 static void	pushswap_three_desc(t_ps_stack *stack, int options)
 {
-	t_icpnode *cur;
+	t_icpnode	*cur;
 
 	cur = stack->list->pivot;
 	if (cur->data > cur->next->data && cur->data > cur->prev->data)
@@ -48,7 +48,7 @@ static void	pushswap_three_desc(t_ps_stack *stack, int options)
 
 static void	pushswap_three_asc(t_ps_stack *stack, int options)
 {
-	t_icpnode *cur;
+	t_icpnode	*cur;
 
 	cur = stack->list->pivot;
 	if (cur->data < cur->next->data && cur->data < cur->prev->data)

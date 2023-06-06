@@ -36,13 +36,13 @@ int	num_inst_equiv(t_ps_stack *send, t_ps_stack *receive, int command)
 int	num_combo_equiv(t_ps_stack *send, t_ps_stack *receive, int command)
 {
 	if (command == send->codes.sa_num
-	|| command == send->codes.sb_num)
+		|| command == send->codes.sb_num)
 		return (receive->codes.ss_num);
 	if (command == send->codes.ra_num
-	|| command == send->codes.rb_num)
+		|| command == send->codes.rb_num)
 		return (receive->codes.rr_num);
 	if (command == send->codes.rra_num
-	|| command == send->codes.rrb_num)
+		|| command == send->codes.rrb_num)
 		return (receive->codes.rrr_num);
 	return (0);
 }

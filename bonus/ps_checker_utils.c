@@ -96,12 +96,12 @@ char *op, t_pscount *counter)
 	else if (!ft_strncmp(op, "sa\n", 3) || !ft_strncmp(op, "sb\n", 3) \
 	|| !ft_strncmp(op, "ss\n", 3))
 		op_swap(a_stack, b_stack, op, counter);
-	else if(!ft_strncmp(op, "pa\n", 3))
+	else if (!ft_strncmp(op, "pa\n", 3))
 	{
 		pslist_push_top(a_stack, b_stack, FALSE);
 		(counter->pa_count)++;
 	}
-	else if(!ft_strncmp(op, "pb\n", 3))
+	else if (!ft_strncmp(op, "pb\n", 3))
 	{
 		pslist_push_top(b_stack, a_stack, FALSE);
 		(counter->pb_count)++;

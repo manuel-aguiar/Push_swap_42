@@ -18,17 +18,11 @@
 # include <stdlib.h>
 # include <stdint.h>
 
-/*# define MAGIC_SIZE 200
-# define MAGIC_NORM 50
-# define SORT_SMALL 30*/
 # define INSORT_TO_A 20
 # define INSORT_TO_B INSORT_TO_A / 2
 # define PUSHBUCKET_LIM 0
 # define TRUE 1
 # define FALSE 0
-
-
-#include <stdio.h>
 
 typedef struct s_inst_code
 {
@@ -43,13 +37,13 @@ typedef struct s_inst_code
 	int		rra_num;
 	int		rrb_num;
 	int		rrr_num;
-} t_inst_code;
+}	t_inst_code;
 
 typedef struct s_ps_stack
 {
 	t_icplist	*list;
-	t_idmlist 	*save_plays;
-	t_inst_code codes;
+	t_idmlist	*save_plays;
+	t_inst_code	codes;
 	char		push_name[4];
 	char		swap_name[4];
 	char		rotate_name[4];
@@ -64,8 +58,7 @@ typedef struct s_ps_stack
 	int			ascending;
 	int			op_counter;
 	int			trial_mode;
-} t_ps_stack;
-
+}	t_ps_stack;
 
 enum e_play_options
 {
@@ -135,7 +128,7 @@ void		ps_manage_options(t_ps_stack *stack, int options, \
 			char *cmd, int cmd_num);
 
 /* ps_plays_goto.c*/
-void 		go_to_target_swap(t_ps_stack *stack, int target, \
+void		go_to_target_swap(t_ps_stack *stack, int target, \
 			int min, int max);
 void		go_to_intersection(t_ps_stack *stack, int min, \
 			int max, int options);
@@ -156,7 +149,7 @@ int			find_bucket_ends(t_ps_stack *stack, int min, int max);
 /*ps_play_find_utils.c*/
 int			in_bucket(int target, int min, int max);
 int			is_target(int target, int test);
-int   		members_in_bucket(t_ps_stack *stack, int min, int max);
+int			members_in_bucket(t_ps_stack *stack, int min, int max);
 int			full_list_is_bucket(t_ps_stack *stack, int min, int max);
 int			last_sorted_number(t_ps_stack *stack, int start, int end);
 
@@ -164,8 +157,8 @@ int			last_sorted_number(t_ps_stack *stack, int start, int end);
 void		pushbucket(t_ps_stack *from, t_ps_stack *to, int min, int max);
 void		insertion_sort_push(t_ps_stack *from, t_ps_stack *to, \
 			int start, int end);
-void 		swap_when_pushing(t_ps_stack *stack, int min, int max);
-void 		swap_when_inserting(t_ps_stack *stack, int target, \
+void		swap_when_pushing(t_ps_stack *stack, int min, int max);
+void		swap_when_inserting(t_ps_stack *stack, int target, \
 			int min, int max);
 
 /*ps_plays_supermoves.c*/
@@ -175,9 +168,9 @@ void		super_rotate(t_ps_stack *a_stack, t_ps_stack *b_stack);
 void		super_revrot(t_ps_stack *a_stack, t_ps_stack *b_stack);
 
 /*ps_plays_pushbucket_div.c*/
-void    	pushbucket_divide(t_ps_stack *from, t_ps_stack *to, \
+void		pushbucket_divide(t_ps_stack *from, t_ps_stack *to, \
 			int min, int max);
-void    	pushbucket_divide_col(t_ps_stack *from, t_ps_stack *to, \
+void		pushbucket_divide_col(t_ps_stack *from, t_ps_stack *to, \
 			int min, int max);
 
 /* algos */
@@ -191,14 +184,14 @@ void		quicksort_b(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 int			best_cocktail_entry(t_ps_stack *stack, int len);
 
 /*ps_cocktail_best_entry_mv.c*/
-int 		get_stack_to_best_entry(t_ps_stack *stack, int min, \
+int			get_stack_to_best_entry(t_ps_stack *stack, int min, \
 			int max, int options);
 
 /*ps_cocktail_solver.c*/
 void		stack_cocktail(t_ps_stack *stack, int min, int max, int options);
 
 /*ps_cocktail_solver_utils.c*/
-void 		pushswap_sort_two(t_ps_stack *stack, int options);
+void		pushswap_sort_two(t_ps_stack *stack, int options);
 void		cocktail_two(t_ps_stack *stack, int min, int max, int options);
 void		pushswap_sort_three(t_ps_stack *stack, int options);
 
@@ -238,11 +231,11 @@ void		a_stack_trials(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 /*ps_trials_b_stack.c*/
 void		b_stack_insertion_minmax(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 			int min, int max);
-void 		b_stack_straight_ins(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+void		b_stack_straight_ins(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 			int min, int max);
-void 		b_stack_double_cocktail(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+void		b_stack_double_cocktail(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 			int min, int max);
-void 		b_stack_trials(t_ps_stack *a_stack, t_ps_stack *b_stack, \
+void		b_stack_trials(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 			int min, int max);
 
 /*ps_trials_utils.c*/

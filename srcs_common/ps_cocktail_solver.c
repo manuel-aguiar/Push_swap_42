@@ -23,7 +23,7 @@ static int	sorted_forward(t_ps_stack *stack, int min, int max, int index)
 	len = max - min;
 	while (in_bucket(cur->next->data, min, max) && index < len - 1)
 	{
-		if ((cur->data > cur->next->data && stack->ascending)\
+		if ((cur->data > cur->next->data && stack->ascending) \
 		|| (cur->data < cur->next->data && !stack->ascending))
 			return (count);
 		cur = cur->next;
@@ -42,7 +42,7 @@ static int	sorted_backward(t_ps_stack *stack, int min, int max, int index)
 	cur = stack->list->pivot;
 	while (in_bucket(cur->prev->data, min, max) && index > 0)
 	{
-		if ((cur->data < cur->prev->data && stack->ascending)\
+		if ((cur->data < cur->prev->data && stack->ascending) \
 		|| (cur->data > cur->prev->data && !stack->ascending))
 			return (count);
 		cur = cur->prev;
@@ -63,7 +63,7 @@ static void	internal_cocktail(t_ps_stack *stack, int min, int max, int options)
 	{
 		rotate = sorted_forward(stack, min, max, i);
 		pushswap_sort_two(stack, options);
-		while (i < max - min - 1  && rotate != -1)
+		while (i < max - min - 1 && rotate != -1)
 		{
 			pslist_rotate(stack, rotate, options);
 			i += rotate;

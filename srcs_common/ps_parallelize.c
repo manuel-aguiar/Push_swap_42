@@ -80,7 +80,6 @@ t_ps_stack *b_stack, int target)
 	idmlist_in_tail(combo, num_combo_equiv(a_stack, b_stack, target));
 	idmlist_del_head_destroy(&(a_stack->save_plays));
 	idmlist_del_head_destroy(&(b_stack->save_plays));
-
 }
 
 void	intersect_plays(t_idmlist *combo, t_ps_stack *a_stack, \
@@ -122,7 +121,7 @@ void	merge_plays(t_ps_stack *receiver, t_ps_stack *sender)
 		receiver->save_plays = sender->save_plays;
 		sender->save_plays = NULL;
 	}
-	else if(!sender->save_plays)
+	else if (!sender->save_plays)
 		return ;
 	else
 	{

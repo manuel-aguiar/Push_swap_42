@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ps_checker.c                                       :+:      :+:    :+:   */
+/*   checker_main.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/27 13:39:00 by marvin            #+#    #+#             */
-/*   Updated: 2023/04/27 13:39:00 by marvin           ###   ########.fr       */
+/*   Created: 2023/06/06 18:22:19 by mmaria-d          #+#    #+#             */
+/*   Updated: 2023/06/06 18:22:19 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	checker_solver(int ac, char **av)
 {
 	t_ps_stack	a_stack;
 	t_ps_stack	b_stack;
-	t_pscount 	counter;
+	t_pscount	counter;
 	int			total_len;
 
 	if (!ps_preprocess(&(a_stack.list), ac, av) \
@@ -63,7 +63,7 @@ int	checker_solver(int ac, char **av)
 	return (1);
 }
 
-int main(int ac, char **av)
+int	main(int ac, char **av)
 {
 	if (ac > 1)
 		checker_solver(--ac, ++av);
