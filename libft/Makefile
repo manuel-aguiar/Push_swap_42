@@ -133,22 +133,17 @@ SRC_DIRS		=	$(ATOI)		$(MEMFUNC)	$(OUTPUT)	$(PRINTF) 	\
 
 SRCS		:= 		$(foreach src_dir,$(SRC_DIRS),$(wildcard $(SRC_PATH)/$(src_dir)/*.c))
 
-OBJS 		=		$(SRCS:%.c=%.o)
-
-## @mkdir -p $(OBJ_PATH)
-## @mv $(OBJS) $(OBJ_PATH)
-## @$(LIB) $@ $(OBJ_PATH)/*.o
+OBJS 		=		$(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRCS))
 
 all: $(NAME)
 
 $(NAME):  message $(OBJS)
 	@echo Compiling Libft, wait a moment....
-	@mkdir -p $(OBJ_PATH)
-	@mv $(OBJS) $(OBJ_PATH)
-	@$(LIB) $@ $(OBJ_PATH)/*.o
+	@$(LIB) $@ $(OBJS)
 	@echo Libft is ready!!
 
-%.o : %.c
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(dir $@)
 	@$(CC) $(CFLAGS) -I$(INC_PATH) -c $< -o $@
 
 message:
@@ -156,11 +151,8 @@ message:
 
 clean:
 	@echo Removing object files.....
-	@if [ -n "$(wildcard $(OBJ_PATH)/*.o)" ]; then \
-        $(RM) $(OBJ_PATH)/*.o; \
-    fi
 	@if [ -d "$(OBJ_PATH)" ]; then \
-        rmdir $(OBJ_PATH); \
+        rm -rf $(OBJ_PATH); \
     fi
 	@echo Objects successfully deleted!
 

@@ -13,8 +13,9 @@ MAKE		=		make
 
 ## FOLDER PATH ##
 INC_PATH	=		incs
-SRC_PATH	=		srcs_common
-SRC_PS_PATH	=		srcs_ps
+SRC_PATH	=		srcs
+COMMON_PATH	=		srcs_common
+PS_PATH		=		srcs_ps
 BONUS_PATH	=		bonus
 OBJ_PATH	=		objs
 
@@ -56,21 +57,21 @@ FILES		=		ps_preprocess.c 			\
 					ps_trials_utils.c			\
 					ps_messages.c
 
-FILES_B		=		checker_main.c				\
-					ps_checker_counter.c 		\
-					ps_checker_utils.c
+FILES_B		=		ps_checker_main_bonus.c		\
+					ps_checker_counter_bonus.c 	\
+					ps_checker_utils_bonus.c
 
 FILES_PS	=		push_swap_main.c
 
 
-SRCS_COMMON := 		$(addprefix $(SRC_PATH)/, $(FILES))
-SRCS_PS 	:= 		$(addprefix $(SRC_PS_PATH)/, $(FILES_PS))
-SRCS_B		:= 		$(addprefix $(BONUS_PATH)/, $(FILES_B))
+SRCS_COMMON := 		$(addprefix $(SRC_PATH)/, $(addprefix $(COMMON_PATH)/, $(FILES)))
+SRCS_PS 	:= 		$(addprefix $(SRC_PATH)/, $(addprefix $(PS_PATH)/, $(FILES_PS)))
+SRCS_B		:= 		$(addprefix $(SRC_PATH)/, $(addprefix $(BONUS_PATH)/, $(FILES_B)))
 
 
-OBJS		=		$(SRCS_COMMON:%.c=%.o)
-OBJS_PS		=		$(SRCS_PS:%.c=%.o)
-OBJS_B 		=		$(SRCS_B:%.c=%.o)
+OBJS		=		$(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRCS_COMMON))
+OBJS_PS		=		$(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRCS_PS))
+OBJS_B 		=		$(patsubst $(SRC_PATH)/%.c,$(OBJ_PATH)/%.o,$(SRCS_B))
 
 INCS		= 		-I$(INC_PATH) -I$(LIB_PATH)/$(LIB_INC_P)
 
@@ -78,13 +79,11 @@ all: $(NAME)
 
 $(NAME): message $(LIBFT) $(OBJS) $(OBJS_PS)
 	@$(CC) $(FLAGS) $(OBJS) $(OBJS_PS) $(INCS) -o $(NAME) $(ADD_LIB) $(LIB_PATH)/$(LIBFT)
-	@mkdir -p $(OBJ_PATH)
-	@mv $(OBJS) $(OBJ_PATH)
-	@mv $(OBJS_PS) $(OBJ_PATH)
 	@echo Program $(NAME) ready!!
 
-%.o : %.c
-	@$(CC) $(FLAGS) $(INCS) -c $< -o $@
+$(OBJ_PATH)/%.o: $(SRC_PATH)/%.c
+	@mkdir -p $(dir $@)
+	@$(CC) $(CFLAGS) $(INCS) -c $< -o $@
 
 $(LIBFT):
 	@echo Preparing Libft....
@@ -94,9 +93,6 @@ bonus: $(BONUS)
 
 $(BONUS) : message $(LIBFT) $(OBJS) $(OBJS_B)
 	@$(CC) $(FLAGS) $(OBJS) $(OBJS_B) $(INCS) -o $(BONUS) $(ADD_LIB) $(LIB_PATH)/$(LIBFT)
-	@mkdir -p $(OBJ_PATH)
-	@mv $(OBJS) $(OBJ_PATH)
-	@mv $(OBJS_B) $(OBJ_PATH)
 	@echo Program $(BONUS) ready!!
 
 message:
@@ -104,11 +100,8 @@ message:
 
 clean:
 	@echo Removing object files.....
-	@if [ -n "$(wildcard $(OBJ_PATH)/*.o)" ]; then \
-        $(RM) $(OBJ_PATH)/*.o; \
-    fi
 	@if [ -d "$(OBJ_PATH)" ]; then \
-        rmdir $(OBJ_PATH); \
+        rm -rf $(OBJ_PATH); \
     fi
 	@make clean -C $(LIB_PATH)
 	@echo Objects successfully deleted!
