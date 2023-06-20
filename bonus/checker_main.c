@@ -14,16 +14,17 @@
 
 void	ok_reaction(t_pscount *counter)
 {
+	(void)counter;
 	ok_message();
-	print_counter(counter);
 }
 
 void	ko_reaction(t_ps_stack *a_stack, t_ps_stack *b_stack, \
 t_pscount *counter)
 {
+	(void)counter;
+	(void)a_stack;
+	(void)b_stack;
 	ko_message();
-	ps_printlists(a_stack->list, b_stack->list, &printmembs);
-	print_counter(counter);
 }
 
 void	stack_and_counter(t_ps_stack *a_stack, t_ps_stack *b_stack, \
