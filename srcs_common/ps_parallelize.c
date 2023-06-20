@@ -101,15 +101,12 @@ t_ps_stack *b_stack)
 				idmlist_node_to_tail(combo, \
 				idmlist_retrieve_head(&(b_stack->save_plays)));
 		}
+		else if (is_from_a)
+			merge_combo(combo, a_stack, b_stack, target);
 		else
 		{
-			if (is_from_a)
-				merge_combo(combo, a_stack, b_stack, target);
-			else
-			{
-				equiv = num_inst_equiv(a_stack, b_stack, target);
-				merge_combo(combo, a_stack, b_stack, equiv);
-			}
+			equiv = num_inst_equiv(a_stack, b_stack, target);
+			merge_combo(combo, a_stack, b_stack, equiv);
 		}
 	}
 }

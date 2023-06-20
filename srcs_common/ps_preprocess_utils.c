@@ -6,7 +6,7 @@
 /*   By: mmaria-d <mmaria-d@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/09 16:51:02 by marvin            #+#    #+#             */
-/*   Updated: 2023/06/06 18:27:56 by mmaria-d         ###   ########.fr       */
+/*   Updated: 2023/06/20 18:55:56 by mmaria-d         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,9 +40,8 @@ int	wordnum(char *str)
 	{
 		if (!ft_isspace(str[i]) && ft_isspace(str[i - 1]))
 			count++;
-		if (ft_isdigit(str[i]))
+		if (ft_isdigit(str[i++]))
 			has_digits = 1;
-		i++;
 	}
 	if ((str[i] && !ps_valid_char(str[i])) || !has_digits)
 		return (0);

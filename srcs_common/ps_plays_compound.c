@@ -49,7 +49,6 @@ void	pushbucket(t_ps_stack *from, t_ps_stack *to, int min, int max)
 				pslist_rotate(from, 1, O_PRINT | O_COUNT);
 			}
 		}
-		super_swap(from, to, min, max);
 		pslist_push_top(to, from, O_PRINT | O_COUNT);
 	}
 }
