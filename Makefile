@@ -115,8 +115,9 @@ clean:
 
 fclean: clean
 	@echo Deleting libft.a...
-	$(RM) $(NAME)
-	$(RM) $(LIB_PATH)/$(LIBFT)
+	@rm $(NAME)
+	@rm $(BONUS)
+	@rm $(LIB_PATH)/$(LIBFT)
 	@echo Done!!
 
 re: fclean all

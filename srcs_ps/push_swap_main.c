@@ -43,5 +43,5 @@ int	main(int ac, char **av)
 }
 
 /*
-$args="     "; ./push_swap $args | ./checker $args
+args="     "; ./push_swap $args | ./checker $args
 */
