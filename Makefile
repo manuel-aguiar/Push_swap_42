@@ -75,12 +75,12 @@ OBJS_B 		=		$(SRCS_B:%.c=%.o)
 INCS		= 		-I$(INC_PATH) -I$(LIB_PATH)/$(LIB_INC_P)
 
 all: $(NAME)
-##@mkdir -p objs
-##@mv $(OBJS) objs
-##@mv $(OBJS_PS) objs
 
 $(NAME): message $(LIBFT) $(OBJS) $(OBJS_PS)
 	@$(CC) $(FLAGS) $(OBJS) $(OBJS_PS) $(INCS) -o $(NAME) $(ADD_LIB) $(LIB_PATH)/$(LIBFT)
+	@mkdir -p $(OBJ_PATH)
+	@mv $(OBJS) $(OBJ_PATH)
+	@mv $(OBJS_PS) $(OBJ_PATH)
 	@echo Program $(NAME) ready!!
 
 %.o : %.c
@@ -94,6 +94,9 @@ bonus: $(BONUS)
 
 $(BONUS) : message $(LIBFT) $(OBJS) $(OBJS_B)
 	@$(CC) $(FLAGS) $(OBJS) $(OBJS_B) $(INCS) -o $(BONUS) $(ADD_LIB) $(LIB_PATH)/$(LIBFT)
+	@mkdir -p $(OBJ_PATH)
+	@mv $(OBJS) $(OBJ_PATH)
+	@mv $(OBJS_B) $(OBJ_PATH)
 	@echo Program $(BONUS) ready!!
 
 message:
@@ -101,14 +104,17 @@ message:
 
 clean:
 	@echo Removing object files.....
-	@$(RM) $(OBJS)
-	@$(RM) -r $(OBJ_PATH)
+	@if [ -n "$(wildcard $(OBJ_PATH)/*.o)" ]; then \
+        $(RM) $(OBJ_PATH)/*.o; \
+    fi
 	@rmdir $(OBJ_PATH)
+	@make clean -C $(LIB_PATH)
 	@echo Objects successfully deleted!
 
 fclean: clean
 	@echo Deleting libft.a...
 	$(RM) $(NAME)
+	$(RM) $(LIB_PATH)/$(LIBFT)
 	@echo Done!!
 
 re: fclean all

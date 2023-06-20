@@ -159,6 +159,7 @@ clean:
 	@if [ -n "$(wildcard $(OBJ_PATH)/*.o)" ]; then \
         $(RM) $(OBJ_PATH)/*.o; \
     fi
+	@rmdir $(OBJ_PATH)
 	@echo Objects successfully deleted!
 
 fclean: clean
