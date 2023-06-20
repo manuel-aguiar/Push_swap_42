@@ -159,7 +159,9 @@ clean:
 	@if [ -n "$(wildcard $(OBJ_PATH)/*.o)" ]; then \
         $(RM) $(OBJ_PATH)/*.o; \
     fi
-	@rmdir $(OBJ_PATH)
+	@if [ -n "$(OBJ_PATH)" ]; then \
+        rmdir $(OBJ_PATH); \
+    fi
 	@echo Objects successfully deleted!
 
 fclean: clean
@@ -171,9 +173,7 @@ fclean: clean
 
 re: fclean all
 
-mkclean: all clean
-
-.PHONY: clean fclean re mkclean bruh message
+.PHONY: clean fclean re message moveobjs
 
 ##COLOUR
 
