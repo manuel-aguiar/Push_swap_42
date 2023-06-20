@@ -107,7 +107,7 @@ clean:
 	@if [ -n "$(wildcard $(OBJ_PATH)/*.o)" ]; then \
         $(RM) $(OBJ_PATH)/*.o; \
     fi
-	@if [ -n "$(OBJ_PATH)" ]; then \
+	@if [ -d "$(OBJ_PATH)" ]; then \
         rmdir $(OBJ_PATH); \
     fi
 	@make clean -C $(LIB_PATH)
@@ -115,9 +115,15 @@ clean:
 
 fclean: clean
 	@echo Deleting libft.a...
-	@rm $(NAME)
-	@rm $(BONUS)
-	@rm $(LIB_PATH)/$(LIBFT)
+	@if [ -n "$(wildcard  $(NAME))" ]; then \
+        $(RM) $(NAME); \
+    fi
+	@if [ -n "$(wildcard  $(BONUS))" ]; then \
+        $(RM) $(BONUS); \
+    fi
+	@if [ -n "$(wildcard  $(LIB_PATH)/$(LIBFT))" ]; then \
+        $(RM) $(LIB_PATH)/$(LIBFT); \
+    fi
 	@echo Done!!
 
 re: fclean all
