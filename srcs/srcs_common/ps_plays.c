@@ -90,8 +90,9 @@ int	pslist_push_top(t_ps_stack *to, t_ps_stack *from, int options)
 	if (!to->list || !from->list || !from->list->pivot)
 		return (0);
 	move = pslist_retrieve_top(from);
-	if (move)
-		pslist_add_top(to, move);
+	if (!move)
+		return (1);	
+	pslist_add_top(to, move);
 	ps_manage_options(from, options, from->push_name, \
 	from->my_push_num);
 	return (1);
@@ -101,7 +102,7 @@ int	pslist_rotate(t_ps_stack *stack, int rotate, int options)
 {
 	t_icplist	*list;
 
-	if (rotate == 0)
+	if (rotate == 0 || stack->list->len <= 1)
 		return (1);
 	list = stack->list;
 	if (rotate > 0)
